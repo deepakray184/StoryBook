@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WonderTales - Interactive Kids Magic Storybook</title>
+    <meta name="description" content="Colourful interactive kids storybook website for Playgroup, Nursery, and UKG classes with child-voice audio and multi-language translation.">
+    <meta name="theme-color" content="#FBBF24">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kidYellow: '#FEF08A',
+                        kidAmber: '#F59E0B',
+                        kidPink: '#F472B6',
+                        kidSky: '#38BDF8',
+                        kidGreen: '#4ADE80',
+                        kidPurple: '#A855F7',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Kids Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="relative flex flex-col justify-between min-h-screen">
+
+    <!-- Decorative floating background bubbles -->
+    <div class="bg-bubble w-32 h-32 top-10 left-6 opacity-30"></div>
+    <div class="bg-bubble w-48 h-48 top-80 right-8 opacity-25"></div>
+    <div class="bg-bubble w-24 h-24 bottom-20 left-1/4 opacity-30"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 py-6 md:py-8 flex-grow">
+
+        <!-- HEADER & NAV -->
+        <header class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8 bg-white/80 backdrop-blur-md p-6 rounded-3xl shadow-xl border-4 border-amber-300">
+            <!-- Logo & Brand -->
+            <div class="flex items-center gap-4 text-center md:text-left">
+                <div class="w-16 h-16 bg-gradient-to-tr from-amber-400 to-yellow-200 rounded-3xl flex items-center justify-center text-4xl shadow-md transform hover:rotate-12 transition">
+                    🌟
+                </div>
+                <div>
+                    <h1 id="site-title" class="text-3xl md:text-4xl font-black text-amber-950 tracking-tight">
+                        WonderTales Kids Magic Storybook
+                    </h1>
+                    <p id="site-tagline" class="text-sm md:text-base font-bold text-amber-700/80">
+                        Interactive Stories, Fun Sounds & Magical Adventures for Little Learners!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Language & Audio Settings -->
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <!-- Background Music Toggle -->
+                <button id="bg-music-toggle" class="chunky-btn bg-white hover:bg-amber-100 text-amber-900 font-black px-4 py-2.5 rounded-2xl text-sm border-2 border-amber-300 shadow-sm flex items-center gap-2">
+                    <span>🎵</span> <span>Music: Off</span>
+                </button>
+
+                <!-- Language Selector Dropdown -->
+                <div class="relative flex items-center">
+                    <span class="absolute left-3 text-lg pointer-events-none">🌐</span>
+                    <select id="lang-select" class="appearance-none chunky-btn bg-amber-400 hover:bg-amber-300 text-amber-950 font-black pl-10 pr-8 py-2.5 rounded-2xl text-sm border-2 border-amber-500 shadow-sm cursor-pointer outline-none">
+                        <option value="en">🇬🇧 English</option>
+                        <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
+                        <option value="es">🇪🇸 Español (Spanish)</option>
+                        <option value="fr">🇫🇷 Français (French)</option>
+                        <option value="de">🇩🇪 Deutsch (German)</option>
+                    </select>
+                    <span class="absolute right-3 pointer-events-none text-xs text-amber-950 font-bold">▼</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- GRADE & CATEGORY FILTER TABS -->
+        <nav class="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-8">
+            <button data-filter="all" class="filter-btn active-filter chunky-btn bg-white text-slate-700 font-black px-5 py-3 rounded-2xl text-sm md:text-base border-2 border-slate-200 shadow-sm">
+                <span id="filter-all">🌈 All Stories</span>
+            </button>
+            <button data-filter="playgroup" class="filter-btn chunky-btn bg-white text-yellow-900 font-black px-5 py-3 rounded-2xl text-sm md:text-base border-2 border-yellow-300 shadow-sm">
+                <span id="filter-playgroup">🐣 Playgroup (Ages 2-3)</span>
+            </button>
+            <button data-filter="nursery" class="filter-btn chunky-btn bg-white text-orange-900 font-black px-5 py-3 rounded-2xl text-sm md:text-base border-2 border-orange-300 shadow-sm">
+                <span id="filter-nursery">🧸 Nursery (Ages 3-4)</span>
+            </button>
+            <button data-filter="ukg" class="filter-btn chunky-btn bg-white text-purple-900 font-black px-5 py-3 rounded-2xl text-sm md:text-base border-2 border-purple-300 shadow-sm">
+                <span id="filter-ukg">🚀 UKG (Ages 4-6)</span>
+            </button>
+            <button data-filter="activities" class="filter-btn chunky-btn bg-white text-rose-900 font-black px-5 py-3 rounded-2xl text-sm md:text-base border-2 border-rose-300 shadow-sm">
+                <span id="filter-activities">🎨 Magic Coloring & Fun</span>
+            </button>
+        </nav>
+
+        <!-- SECTION 1: STORY LIBRARY -->
+        <main id="library-section">
+            <div id="story-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Dynamically populated story cards -->
+            </div>
+        </main>
+
+        <!-- SECTION 2: DRAWING & COLORING PAD (ACTIVITIES) -->
+        <section id="drawing-pad-section" class="hidden bg-white/90 backdrop-blur-md p-6 md:p-8 rounded-3xl shadow-2xl border-4 border-rose-300">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 id="drawing-pad-title" class="text-3xl font-black text-rose-900 flex items-center gap-2">
+                        🎨 Magic Rainbow Drawing Pad
+                    </h2>
+                    <p class="text-slate-600 font-bold text-sm">Pick colors or stickers and create your own magical story drawing!</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="clear-canvas-btn" class="chunky-btn bg-slate-200 hover:bg-slate-300 text-slate-800 font-black px-4 py-2 rounded-2xl text-sm shadow">
+                        🧹 Clear
+                    </button>
+                    <button id="save-canvas-btn" class="chunky-btn bg-emerald-500 hover:bg-emerald-400 text-white font-black px-5 py-2 rounded-2xl text-sm shadow-md flex items-center gap-2">
+                        <span>💾</span> <span>Save Picture</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Toolbar: Colors, Brushes & Stickers -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-4 bg-amber-50 p-4 rounded-2xl border-2 border-amber-200">
+                <!-- Color choices -->
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-black text-xs text-amber-950 uppercase tracking-wider mr-1">Colors:</span>
+                    <button class="color-choice w-8 h-8 rounded-full bg-red-500 ring-4 ring-amber-400" data-color="#EF4444"></button>
+                    <button class="color-choice w-8 h-8 rounded-full bg-orange-500" data-color="#F97316"></button>
+                    <button class="color-choice w-8 h-8 rounded-full bg-yellow-400" data-color="#FACC15"></button>
+                    <button class="color-choice w-8 h-8 rounded-full bg-emerald-500" data-color="#10B981"></button>
+                    <button class="color-choice w-8 h-8 rounded-full bg-sky-500" data-color="#0EA5E9"></button>
+                    <button class="color-choice w-8 h-8 rounded-full bg-purple-500" data-color="#8B5CF6"></button>
+                    <button class="color-choice w-8 h-8 rounded-full bg-pink-500" data-color="#EC4899"></button>
+                    <button class="color-choice w-8 h-8 rounded-full bg-slate-900" data-color="#0F172A"></button>
+                </div>
+
+                <!-- Brush sizes -->
+                <div class="flex items-center gap-2">
+                    <span class="font-black text-xs text-amber-950 uppercase tracking-wider mr-1">Brush:</span>
+                    <button class="brush-size-btn chunky-btn bg-white text-slate-800 font-black px-3 py-1 rounded-xl text-xs border border-amber-200" data-size="6">Thin</button>
+                    <button class="brush-size-btn chunky-btn bg-amber-300 text-amber-950 font-black px-3 py-1 rounded-xl text-xs border border-amber-300" data-size="14">Medium</button>
+                    <button class="brush-size-btn chunky-btn bg-white text-slate-800 font-black px-3 py-1 rounded-xl text-xs border border-amber-200" data-size="28">Chunky</button>
+                </div>
+
+                <!-- Fun Stamp Stickers -->
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-black text-xs text-amber-950 uppercase tracking-wider mr-1">Stickers:</span>
+                    <button class="stamp-btn text-2xl p-1 rounded-xl hover:bg-amber-200 transition" data-stamp="⭐">⭐</button>
+                    <button class="stamp-btn text-2xl p-1 rounded-xl hover:bg-amber-200 transition" data-stamp="🌸">🌸</button>
+                    <button class="stamp-btn text-2xl p-1 rounded-xl hover:bg-amber-200 transition" data-stamp="🦆">🦆</button>
+                    <button class="stamp-btn text-2xl p-1 rounded-xl hover:bg-amber-200 transition" data-stamp="🚀">🚀</button>
+                    <button class="stamp-btn text-2xl p-1 rounded-xl hover:bg-amber-200 transition" data-stamp="🧸">🧸</button>
+                    <button class="stamp-btn text-2xl p-1 rounded-xl hover:bg-amber-200 transition" data-stamp="🎈">🎈</button>
+                    <button class="stamp-btn text-2xl p-1 rounded-xl hover:bg-amber-200 transition" data-stamp="🧁">🧁</button>
+                </div>
+            </div>
+
+            <!-- Canvas Viewport -->
+            <div class="w-full flex justify-center bg-white rounded-2xl shadow-inner border-4 border-dashed border-rose-200 overflow-hidden">
+                <canvas id="drawing-canvas" class="max-w-full h-auto rounded-xl"></canvas>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="w-full text-center py-6 text-amber-900/80 font-bold text-sm">
+        <p>✨ Created with love for Playgroup, Nursery & UKG kids • 100% Free & Open Source on GitHub Pages ✨</p>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- INTERACTIVE STORYBOOK READER MODAL -->
+    <!-- ===================================================================== -->
+    <div id="story-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-2 md:p-6 overflow-y-auto">
+        <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl border-4 md:border-8 border-amber-300 flex flex-col overflow-hidden max-h-[96vh] relative">
+            
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-amber-300 to-yellow-200 px-6 py-4 flex items-center justify-between border-b-4 border-amber-400">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">📖</span>
+                    <div>
+                        <h2 id="modal-story-title" class="text-xl md:text-2xl font-black text-amber-950 truncate max-w-xs md:max-w-md">
+                            Story Title
+                        </h2>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <span id="modal-page-counter" class="text-xs font-black bg-amber-400 text-amber-950 px-2 py-0.5 rounded-full">
+                                1 / 3
+                            </span>
+                            <div class="w-24 md:w-36 bg-white/70 rounded-full h-2.5 overflow-hidden border border-amber-400/50">
+                                <div id="story-progress-bar" class="bg-emerald-500 h-full w-1/3 transition-all duration-300"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Close Button -->
+                <button id="close-story-btn" class="chunky-btn w-12 h-12 bg-rose-500 hover:bg-rose-400 text-white rounded-2xl font-black text-2xl flex items-center justify-center shadow-md">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Interactive Story Scene (SVG Viewport) -->
+            <div class="relative bg-sky-100 flex-grow min-h-[260px] md:min-h-[380px] max-h-[420px] flex items-center justify-center overflow-hidden">
+                <div id="story-scene-container" class="w-full h-full flex items-center justify-center">
+                    <!-- SVG scene loaded here -->
+                </div>
+
+                <!-- Tap hint badge -->
+                <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-lg border-2 border-amber-300 pointer-events-none text-xs md:text-sm font-black text-amber-900 animate-bounce-slow">
+                    <span id="story-hint-text">👉 Tap characters to hear them play!</span>
+                </div>
+            </div>
+
+            <!-- Child-Voice Audio Controls Bar -->
+            <div class="bg-amber-100/90 px-4 md:px-6 py-3 border-t-2 border-b-2 border-amber-200 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <!-- Read to Me (Child Voice) Button -->
+                    <button id="btn-read-to-me" class="chunky-btn bg-emerald-500 hover:bg-emerald-400 text-white font-black px-4 md:px-5 py-2.5 rounded-2xl text-sm shadow-md flex items-center gap-2">
+                        <span class="text-xl">🔊</span>
+                        <span id="read-to-me-label">Read to Me (Child Voice)</span>
+                    </button>
+
+                    <!-- Pause / Resume Voice -->
+                    <button id="btn-pause-voice" class="chunky-btn bg-white hover:bg-amber-200 text-amber-950 font-black p-2.5 rounded-2xl text-sm border-2 border-amber-300 shadow-sm" title="Pause or Resume Voice">
+                        <span>⏸️</span>
+                    </button>
+
+                    <!-- Stop Voice -->
+                    <button id="btn-stop-voice" class="chunky-btn bg-white hover:bg-rose-100 text-rose-700 font-black p-2.5 rounded-2xl text-sm border-2 border-rose-300 shadow-sm hidden" title="Stop Voice">
+                        <span>⏹️</span>
+                    </button>
+                </div>
+
+                <!-- Auto-read toggle -->
+                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-black text-amber-900 select-none">
+                    <input type="checkbox" id="auto-read-toggle" checked class="w-5 h-5 accent-emerald-500 rounded cursor-pointer">
+                    <span id="auto-read-label">Auto-Read on Flip</span>
+                </label>
+            </div>
+
+            <!-- Story Text Area with karaoke highlight -->
+            <div class="p-4 md:p-6 bg-white flex flex-col justify-center">
+                <div id="story-text-container" class="text-xl md:text-2xl font-bold text-slate-800 leading-relaxed text-center min-h-[70px]">
+                    <!-- Words rendered here with interactive word taps -->
+                </div>
+                <p class="text-center text-xs font-bold text-slate-400 mt-2">
+                    💡 <span id="tap-word-hint">Tap any word to hear it pronounced!</span>
+                </p>
+            </div>
+
+            <!-- Modal Footer Navigation Buttons -->
+            <div class="bg-slate-50 px-6 py-4 flex items-center justify-between border-t-2 border-slate-200">
+                <button id="prev-page-btn" class="chunky-btn bg-slate-200 hover:bg-slate-300 text-slate-800 font-black px-6 py-3 rounded-2xl text-base shadow flex items-center gap-2">
+                    <span id="prev-label">◀ Back</span>
+                </button>
+
+                <!-- Next Page -->
+                <button id="next-page-btn" class="chunky-btn bg-amber-400 hover:bg-amber-300 text-amber-950 font-black px-8 py-3 rounded-2xl text-base shadow-md flex items-center gap-2">
+                    <span id="next-label">Next ▶</span>
+                </button>
+
+                <!-- Finish Story Button (Shows on last page) -->
+                <button id="finish-story-btn" class="chunky-btn bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-white font-black px-8 py-3 rounded-2xl text-base shadow-lg hidden flex items-center gap-2 animate-bounce">
+                    <span>🎉 Finish & Play Mini-Game!</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MINI-GAME MODAL -->
+    <!-- ===================================================================== -->
+    <div id="mini-game-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl border-8 border-yellow-300 p-6 md:p-8 text-center relative overflow-hidden">
+            <div class="flex items-center justify-between mb-4">
+                <span id="game-score-display" class="bg-amber-100 text-amber-900 font-black px-4 py-1.5 rounded-full text-base border-2 border-amber-300">
+                    ⭐ 0 / 5
+                </span>
+                <button id="close-game-btn" class="chunky-btn w-10 h-10 bg-rose-500 hover:bg-rose-400 text-white rounded-2xl font-black text-xl flex items-center justify-center shadow">
+                    ✕
+                </button>
+            </div>
+
+            <h3 id="game-title" class="text-3xl font-black text-slate-800 mb-2">
+                Mini Game
+            </h3>
+            <p id="game-instruction" class="text-base font-bold text-slate-600 mb-6">
+                Game instruction here
+            </p>
+
+            <!-- Dynamic Interactive Game Area -->
+            <div id="game-play-area" class="min-h-[220px] flex items-center justify-center bg-amber-50 rounded-2xl border-4 border-dashed border-amber-200 p-4">
+                <!-- Injected elements -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JS MODULES -->
+    <script src="js/audio.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/stories.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
