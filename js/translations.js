@@ -14,8 +14,11 @@ window.translations = {
         playgroup: '🐣 Playgroup (Ages 2-3)',
         nursery: '🧸 Nursery (Ages 3-4)',
         ukg: '🚀 UKG (Ages 4-6)',
+        bedtime: '🌙 Bedtime Sleep Stories',
         activities: '🎨 Magic Coloring & Fun',
         readToMe: '🔊 Read to Me (Child Voice)',
+        sleepModeBtn: '🌙 Sleep Mode (Hands-Free)',
+        sleepModeActive: '🌙 Sleep Mode Active: Auto-reading all pages...',
         pauseAudio: '⏸️ Pause Voice',
         resumeAudio: '▶️ Resume Voice',
         replayAudio: '🔄 Listen Again',
@@ -34,16 +37,20 @@ window.translations = {
         score: 'Stars:',
         greatJob: '🌟 WOW! You are amazing!',
         tryAgain: 'Almost there! Try again!',
+        sweetDreams: 'Shhh... Sweet Dreams! 🌙 Close your eyes and sleep tight, little star ⭐',
+        nightThemeOn: '✨ Night Dimmer: On',
+        nightThemeOff: '✨ Night Dimmer: Off',
         colorPadTitle: '🎨 Magic Rainbow Drawing Pad',
         clearCanvas: '🧹 Clear',
         saveDrawing: '💾 Save Picture',
-        bgMusicOn: '🎵 Music: On',
-        bgMusicOff: '🎵 Music: Off',
+        bgMusicOn: '🎵 Lullaby: On',
+        bgMusicOff: '🎵 Lullaby: Off',
         speechNotSupported: 'Speech is not supported on this device, but you can still read and play!',
         badges: {
             playgroup: 'Playgroup 🐣',
             nursery: 'Nursery 🧸',
-            ukg: 'UKG 🚀'
+            ukg: 'UKG 🚀',
+            bedtime: 'Sleep Story 🌙'
         }
     },
     hi: {
@@ -56,8 +63,11 @@ window.translations = {
         playgroup: '🐣 प्लेग्रुप (२-३ वर्ष)',
         nursery: '🧸 नर्सरी (३-४ वर्ष)',
         ukg: '🚀 यूकेजी (४-६ वर्ष)',
+        bedtime: '🌙 सोने की लोरी कहानियाँ',
         activities: '🎨 रंग भरो और खेलो',
         readToMe: '🔊 बच्चों की आवाज़ में सुनो',
+        sleepModeBtn: '🌙 स्लीप मोड (बिना पन्ने पलटे सुनो)',
+        sleepModeActive: '🌙 स्लीप मोड चालू: पूरी कहानी अपने-आप सुनाई जा रही है...',
         pauseAudio: '⏸️ आवाज़ रोकें',
         resumeAudio: '▶️ आवाज़ जारी रखें',
         replayAudio: '🔄 फिर से सुनो',
@@ -76,16 +86,20 @@ window.translations = {
         score: 'तारे:',
         greatJob: '🌟 शाबाश! आपने बहुत अच्छा किया!',
         tryAgain: 'बहुत बढ़िया! दोबारा कोशिश करो!',
+        sweetDreams: 'शुभ रात्रि! 🌙 अपनी आँखें बंद करो और मीठे सपनों में खो जाओ, नन्हे तारे ⭐',
+        nightThemeOn: '✨ नाइट मोड: चालू',
+        nightThemeOff: '✨ नाइट मोड: बंद',
         colorPadTitle: '🎨 जादुई चित्रकला और रंग',
         clearCanvas: '🧹 साफ़ करें',
         saveDrawing: '💾 चित्र सहेजें',
-        bgMusicOn: '🎵 संगीत: चालू',
-        bgMusicOff: '🎵 संगीत: बंद',
+        bgMusicOn: '🎵 लोरी संगीत: चालू',
+        bgMusicOff: '🎵 लोरी संगीत: बंद',
         speechNotSupported: 'इस डिवाइस पर आवाज़ उपलब्ध नहीं है, पर आप मज़े से पढ़ सकते हैं!',
         badges: {
             playgroup: 'प्लेग्रुप 🐣',
             nursery: 'नर्सरी 🧸',
-            ukg: 'यूकेजी 🚀'
+            ukg: 'यूकेजी 🚀',
+            bedtime: 'शयन कथा 🌙'
         }
     },
     es: {
@@ -98,8 +112,11 @@ window.translations = {
         playgroup: '🐣 Playgroup (2-3 años)',
         nursery: '🧸 Guardería (3-4 años)',
         ukg: '🚀 Preescolar (4-6 años)',
+        bedtime: '🌙 Cuentos para Dormir',
         activities: '🎨 Colorear y Juegos',
         readToMe: '🔊 Léeme (Voz de Niño)',
+        sleepModeBtn: '🌙 Modo Dormir (Manos Libres)',
+        sleepModeActive: '🌙 Modo Dormir Activo: Leyendo sin tocar la pantalla...',
         pauseAudio: '⏸️ Pausar Voz',
         resumeAudio: '▶️ Continuar Voz',
         replayAudio: '🔄 Escuchar de nuevo',
@@ -118,16 +135,20 @@ window.translations = {
         score: 'Estrellas:',
         greatJob: '🌟 ¡Maravilloso! ¡Lo hiciste genial!',
         tryAgain: '¡Casi! ¡Inténtalo de nuevo!',
+        sweetDreams: '¡Shhh... Dulces sueños! 🌙 Cierra tus ojitos y duerme bien, estrellita ⭐',
+        nightThemeOn: '✨ Modo Noche: Sí',
+        nightThemeOff: '✨ Modo Noche: No',
         colorPadTitle: '🎨 Pizarra Mágica para Pintar',
         clearCanvas: '🧹 Limpiar',
         saveDrawing: '💾 Guardar Dibujo',
-        bgMusicOn: '🎵 Música: Sí',
-        bgMusicOff: '🎵 Música: No',
+        bgMusicOn: '🎵 Canción de cuna: Sí',
+        bgMusicOff: '🎵 Canción de cuna: No',
         speechNotSupported: 'La voz no está disponible en este dispositivo, ¡pero puedes leer y divertirte!',
         badges: {
             playgroup: 'Playgroup 🐣',
             nursery: 'Guardería 🧸',
-            ukg: 'Preescolar 🚀'
+            ukg: 'Preescolar 🚀',
+            bedtime: 'Para Dormir 🌙'
         }
     },
     fr: {
@@ -140,8 +161,11 @@ window.translations = {
         playgroup: '🐣 Crèche (2-3 ans)',
         nursery: '🧸 Maternelle (3-4 ans)',
         ukg: '🚀 Grande Section (4-6 ans)',
+        bedtime: '🌙 Histoires du Soir',
         activities: '🎨 Dessin & Jeux',
         readToMe: '🔊 Lis-moi (Voix d\'enfant)',
+        sleepModeBtn: '🌙 Mode Dodo (Mains Libres)',
+        sleepModeActive: '🌙 Mode Dodo Actif : Lecture continue de toutes les pages...',
         pauseAudio: '⏸️ Pause',
         resumeAudio: '▶️ Reprendre',
         replayAudio: '🔄 Réécouter',
@@ -160,16 +184,20 @@ window.translations = {
         score: 'Étoiles:',
         greatJob: '🌟 Bravo ! Tu es formidable !',
         tryAgain: 'Presque ! Réessaie encore !',
+        sweetDreams: 'Chut... Fais de beaux rêves ! 🌙 Ferme les yeux et endors-toi paisiblement ⭐',
+        nightThemeOn: '✨ Mode Nuit: Oui',
+        nightThemeOff: '✨ Mode Nuit: Non',
         colorPadTitle: '🎨 Dessin Magique Arc-en-ciel',
         clearCanvas: '🧹 Effacer',
         saveDrawing: '💾 Enregistrer',
-        bgMusicOn: '🎵 Musique: Oui',
-        bgMusicOff: '🎵 Musique: Non',
+        bgMusicOn: '🎵 Berceuse: Oui',
+        bgMusicOff: '🎵 Berceuse: Non',
         speechNotSupported: 'Synthèse vocale non disponible, mais tu peux lire et t\'amuser !',
         badges: {
             playgroup: 'Crèche 🐣',
             nursery: 'Maternelle 🧸',
-            ukg: 'Grande Section 🚀'
+            ukg: 'Grande Section 🚀',
+            bedtime: 'Pour Dormir 🌙'
         }
     },
     de: {
@@ -182,8 +210,11 @@ window.translations = {
         playgroup: '🐣 Spielgruppe (2-3 J.)',
         nursery: '🧸 Kindergarten (3-4 J.)',
         ukg: '🚀 Vorschule (4-6 J.)',
+        bedtime: '🌙 Gutenacht-Geschichten',
         activities: '🎨 Malen & Spiele',
         readToMe: '🔊 Vorlesen (Kinderstimme)',
+        sleepModeBtn: '🌙 Schlaf-Modus (Freihändig)',
+        sleepModeActive: '🌙 Schlaf-Modus Aktiv: Liest alle Seiten automatisch vor...',
         pauseAudio: '⏸️ Pause',
         resumeAudio: '▶️ Weiter',
         replayAudio: '🔄 Nochmal hören',
@@ -202,16 +233,20 @@ window.translations = {
         score: 'Sterne:',
         greatJob: '🌟 Fantastisch! Sehr gut gemacht!',
         tryAgain: 'Fast geschafft! Nochmal probieren!',
+        sweetDreams: 'Schlaf gut und träum was Schönes! 🌙 Schließe deine Augen, kleiner Stern ⭐',
+        nightThemeOn: '✨ Nachtlicht: An',
+        nightThemeOff: '✨ Nachtlicht: Aus',
         colorPadTitle: '🎨 Zauberhaftes Malbuch',
         clearCanvas: '🧹 Löschen',
         saveDrawing: '💾 Bild speichern',
-        bgMusicOn: '🎵 Musik: An',
-        bgMusicOff: '🎵 Musik: Aus',
+        bgMusicOn: '🎵 Wiegenlied: An',
+        bgMusicOff: '🎵 Wiegenlied: Aus',
         speechNotSupported: 'Sprachausgabe nicht verfügbar, aber du kannst lesen und spielen!',
         badges: {
             playgroup: 'Spielgruppe 🐣',
             nursery: 'Kindergarten 🧸',
-            ukg: 'Vorschule 🚀'
+            ukg: 'Vorschule 🚀',
+            bedtime: 'Gute Nacht 🌙'
         }
     }
 };

@@ -9,6 +9,9 @@ class StoryApp {
         this.currentPageIndex = 0;
         this.currentFilter = 'all';
         this.autoReadOnPageFlip = true;
+        this.isSleepModeActive = false;
+        this.isNightDimmerActive = false;
+        this.sleepAutoAdvanceTimer = null;
         this.miniGameScore = 0;
         this.drawingPad = null;
 
@@ -100,6 +103,18 @@ class StoryApp {
             this.readCurrentPage();
         });
 
+        // Sleep Mode (Hands-Free Continuous Autoplay)
+        document.getElementById('btn-sleep-mode')?.addEventListener('click', () => {
+            window.soundFX.playPop();
+            this.toggleSleepMode();
+        });
+
+        // Night Dimmer
+        document.getElementById('btn-night-dimmer')?.addEventListener('click', () => {
+            window.soundFX.playPop();
+            this.toggleNightDimmer();
+        });
+
         document.getElementById('btn-pause-voice')?.addEventListener('click', () => {
             window.soundFX.playPop();
             if (window.childTTS.isPlaying) {
@@ -146,6 +161,21 @@ class StoryApp {
         window.childTTS.onEnd = () => {
             this.updateVoiceControlButtons(false);
             this.clearWordHighlights();
+
+            // Continuous Sleep Reading logic (Hands-free page turning):
+            if (this.isSleepModeActive && this.currentStory) {
+                if (this.currentPageIndex < this.currentStory.pages.length - 1) {
+                    if (this.sleepAutoAdvanceTimer) clearTimeout(this.sleepAutoAdvanceTimer);
+                    this.sleepAutoAdvanceTimer = setTimeout(() => {
+                        if (this.isSleepModeActive && this.currentStory) {
+                            this.nextPage();
+                            this.readCurrentPage();
+                        }
+                    }, 2000);
+                } else {
+                    this.showSweetDreamsEnding();
+                }
+            }
         };
         window.childTTS.onWordBoundary = (charIndex) => {
             this.highlightCurrentWord(charIndex);
@@ -185,10 +215,16 @@ class StoryApp {
         document.getElementById('filter-playgroup').textContent = window.getTranslation('playgroup');
         document.getElementById('filter-nursery').textContent = window.getTranslation('nursery');
         document.getElementById('filter-ukg').textContent = window.getTranslation('ukg');
+        const bedtimeFilter = document.getElementById('filter-bedtime');
+        if (bedtimeFilter) bedtimeFilter.textContent = window.getTranslation('bedtime');
         document.getElementById('filter-activities').textContent = window.getTranslation('activities');
 
         // Update Buttons in modals
         document.getElementById('read-to-me-label').textContent = window.getTranslation('readToMe');
+        const sleepLabel = document.getElementById('sleep-mode-label');
+        if (sleepLabel) sleepLabel.textContent = window.getTranslation('sleepModeBtn');
+        const sleepStatus = document.getElementById('sleep-status-text');
+        if (sleepStatus) sleepStatus.textContent = window.getTranslation('sleepModeActive');
         document.getElementById('auto-read-label').textContent = window.getTranslation('autoRead');
         document.getElementById('prev-label').textContent = window.getTranslation('previous');
         document.getElementById('next-label').textContent = window.getTranslation('next');
@@ -258,15 +294,87 @@ class StoryApp {
         this.storyModal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
 
+        // Auto-enable Bedtime Sleep Mode if opening a bedtime sleep story
+        if (story.isBedtime || story.grade === 'bedtime') {
+            this.toggleNightDimmer(true);
+            this.toggleSleepMode(true);
+        } else {
+            this.toggleNightDimmer(false);
+            this.toggleSleepMode(false);
+        }
+
         window.soundFX.playSparkle();
         this.renderStoryPage();
     }
 
     closeStory() {
+        if (this.sleepAutoAdvanceTimer) {
+            clearTimeout(this.sleepAutoAdvanceTimer);
+            this.sleepAutoAdvanceTimer = null;
+        }
+        this.toggleSleepMode(false);
+        this.toggleNightDimmer(false);
         window.childTTS.stop();
         this.currentStory = null;
         this.storyModal.classList.add('hidden');
         document.body.style.overflow = 'auto';
+    }
+
+    toggleSleepMode(forceState) {
+        this.isSleepModeActive = (forceState !== undefined) ? forceState : !this.isSleepModeActive;
+        const sleepBtn = document.getElementById('btn-sleep-mode');
+        const banner = document.getElementById('sleep-status-banner');
+
+        if (this.isSleepModeActive) {
+            sleepBtn?.classList.add('sleep-active-glow');
+            banner?.classList.remove('hidden');
+            this.toggleNightDimmer(true);
+
+            // Automatically start gentle whisper lullaby if music is off
+            if (!window.soundFX.bgMusicPlaying) {
+                window.soundFX.startBackgroundMusic(true);
+                this.updateMusicButtonUI(true);
+            }
+
+            // Start reading immediately if idle
+            if (!window.childTTS.isPlaying && this.currentStory) {
+                this.readCurrentPage();
+            }
+        } else {
+            sleepBtn?.classList.remove('sleep-active-glow');
+            banner?.classList.add('hidden');
+            if (this.sleepAutoAdvanceTimer) {
+                clearTimeout(this.sleepAutoAdvanceTimer);
+                this.sleepAutoAdvanceTimer = null;
+            }
+        }
+    }
+
+    toggleNightDimmer(forceState) {
+        this.isNightDimmerActive = (forceState !== undefined) ? forceState : !this.isNightDimmerActive;
+        const modalContainer = this.storyModal.querySelector('.bg-white');
+        const dimmerBtn = document.getElementById('btn-night-dimmer');
+
+        if (this.isNightDimmerActive) {
+            modalContainer?.classList.add('night-theme-modal');
+            dimmerBtn?.classList.add('bg-indigo-900', 'text-yellow-200');
+        } else {
+            modalContainer?.classList.remove('night-theme-modal');
+            dimmerBtn?.classList.remove('bg-indigo-900', 'text-yellow-200');
+        }
+    }
+
+    showSweetDreamsEnding() {
+        const textContainer = document.getElementById('story-text-container');
+        if (textContainer) {
+            textContainer.innerHTML = `
+                <div class="py-4 animate-float text-amber-300">
+                    <div class="text-5xl mb-2">😴🌙⭐</div>
+                    <div class="text-2xl font-black">${window.getTranslation('sweetDreams')}</div>
+                </div>
+            `;
+        }
+        window.soundFX.playSparkle();
     }
 
     renderStoryPage() {
@@ -355,11 +463,13 @@ class StoryApp {
         const page = this.currentStory.pages[this.currentPageIndex];
         const textStr = page.text[window.currentLang] || page.text['en'];
         const langConfig = window.translations[window.currentLang] || window.translations['en'];
+        const isBedtime = this.isSleepModeActive || this.currentStory.isBedtime || this.currentStory.grade === 'bedtime';
 
         window.childTTS.speak(textStr, {
             lang: langConfig.code,
-            pitch: 1.40,
-            rate: 0.86
+            isBedtime: isBedtime,
+            pitch: isBedtime ? 1.25 : 1.40,
+            rate: isBedtime ? 0.78 : 0.86
         });
     }
 

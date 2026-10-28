@@ -12,6 +12,14 @@ Ready to host on **GitHub Pages** with zero setup or build steps required.
 - **Playgroup (Ages 2-3)**: Sensory adventures, animal sounds, colors, and touch-to-react scenes (e.g., *Ducky's Big Splash!*, *Sunny Sun & Happy Cloud*).
 - **Nursery (Ages 3-4)**: Simple narratives, counting games, sharing, and rhyming adventures (e.g., *Barnaby Bear's Honey Picnic*, *The Little Choo-Choo Train*).
 - **UKG / Upper Kindergarten (Ages 4-6)**: Mini moral stories, basic phonics, friendship, curiosity, and early vocabulary (e.g., *Pip the Brave Space Bunny*, *The Magical Garden of Kindness*).
+- **🌙 Bedtime Sleep Stories (All Ages)**: Longer, calming, bedtime narratives designed to help children relax and fall asleep (e.g., *The Sleepy Little Star's Lullaby Journey*, *Goodnight, Cozy Little Forest*).
+
+### 🌙 Hands-Free Sleep Mode (No Page Turning Needed!)
+- **Continuous Autoplay**: Children or parents tap **"🌙 Sleep Mode (Hands-Free)"** once, and the website reads through the entire story from beginning to end without having to touch the screen.
+- **Gentle Bedtime Cadence**: The child voice automatically slows to a relaxing, cozy bedtime rhythm (`rate: 0.78`).
+- **Soothing Lullaby Music Box**: Plays a soft, quiet music-box melody in the background.
+- **Night Dimmer Mode**: Dims bright colors into a deep starry night theme to keep the bedroom dark and comfortable.
+- **Sweet Dreams Ending**: Concludes with a tranquil goodnight message and twinkling stars.
 
 ### 🔊 Automatic Child-Voice Audio (Text-to-Speech)
 - **Child Voice Synthesis**: Uses the Web Speech API with pitch modulation (`1.38` - `1.45`) and gentle reading rate (`0.86`) to speak in a sweet, cheerful, kid-friendly voice.

@@ -1,6 +1,6 @@
 /**
  * audio.js - Web Audio API Sound Effects & Child Voice Text-To-Speech (TTS)
- * Designed for Playgroup, Nursery & UKG interactive storybooks.
+ * Designed for Playgroup, Nursery, UKG & Bedtime Sleep interactive storybooks.
  */
 
 class SoundEffectsEngine {
@@ -9,6 +9,7 @@ class SoundEffectsEngine {
         this.bgMusicPlaying = false;
         this.bgMusicTimer = null;
         this.isMuted = false;
+        this.isBedtimeMode = false;
     }
 
     init() {
@@ -150,7 +151,6 @@ class SoundEffectsEngine {
         if (this.isMuted) return;
         this.init();
         if (!this.ctx) return;
-        // White noise burst
         const bufferSize = this.ctx.sampleRate * 0.35;
         const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
         const data = buffer.getChannelData(0);
@@ -176,12 +176,12 @@ class SoundEffectsEngine {
         noise.start();
     }
 
-    // Train whistle (two harmonizing frequencies)
+    // Train whistle
     playTrainWhistle() {
         if (this.isMuted) return;
         this.init();
         if (!this.ctx) return;
-        const freqs = [440, 554.37]; // A4 and C#5
+        const freqs = [440, 554.37];
         freqs.forEach(f => {
             const now = this.ctx.currentTime;
             const osc = this.ctx.createOscillator();
@@ -227,7 +227,7 @@ class SoundEffectsEngine {
         osc.stop(now + 0.5);
     }
 
-    // Bear Chomp / Gulp
+    // Bear Chomp
     playChomp() {
         if (this.isMuted) return;
         this.init();
@@ -263,16 +263,30 @@ class SoundEffectsEngine {
         }
     }
 
-    startBackgroundMusic() {
+    startBackgroundMusic(isBedtime = false) {
         this.init();
         this.bgMusicPlaying = true;
-        // Simple cheerful music-box notes (C major pentatonic lullaby: C4, D4, E4, G4, A4, C5)
-        const melody = [
+        this.isBedtimeMode = isBedtime;
+
+        // Soothing lullaby melody notes (Twinkle / Brahms soft lullaby)
+        const dayMelody = [
             261.63, 329.63, 392.00, 523.25, 
             392.00, 329.63, 440.00, 392.00, 
             329.63, 293.66, 261.63, 329.63,
             392.00, 523.25, 440.00, 392.00
         ];
+
+        // Deeply relaxing, slow, sweet lullaby for sleeping
+        const sleepMelody = [
+            261.63, 261.63, 392.00, 392.00, 440.00, 440.00, 392.00, // Twinkle twinkle little star
+            349.23, 349.23, 329.63, 329.63, 293.66, 293.66, 261.63, // How I wonder what you are
+            392.00, 392.00, 349.23, 349.23, 329.63, 329.63, 293.66, // Up above the world so high
+            392.00, 392.00, 349.23, 349.23, 329.63, 329.63, 293.66  // Like a diamond in the sky
+        ];
+
+        const melody = isBedtime ? sleepMelody : dayMelody;
+        const noteDuration = isBedtime ? 750 : 520;
+        const baseVolume = isBedtime ? 0.025 : 0.045; // softer whisper volume for bedtime
         let noteIndex = 0;
 
         const playNextNote = () => {
@@ -286,18 +300,17 @@ class SoundEffectsEngine {
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(freq, now);
 
-                // Very gentle volume for background music box
-                gain.gain.setValueAtTime(0.045, now);
-                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+                gain.gain.setValueAtTime(baseVolume, now);
+                gain.gain.exponentialRampToValueAtTime(0.0005, now + (isBedtime ? 0.7 : 0.45));
 
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
 
                 osc.start(now);
-                osc.stop(now + 0.45);
+                osc.stop(now + (isBedtime ? 0.7 : 0.45));
             }
             noteIndex++;
-            this.bgMusicTimer = setTimeout(playNextNote, 520);
+            this.bgMusicTimer = setTimeout(playNextNote, noteDuration);
         };
 
         playNextNote();
@@ -314,6 +327,7 @@ class SoundEffectsEngine {
 
 /**
  * ChildVoiceTTS - Specialized Web Speech Synthesis tuned for a cheerful, gentle Child Voice
+ * Supports daytime upbeat reading and gentle soothing bedtime mode.
  */
 class ChildVoiceTTS {
     constructor() {
@@ -322,8 +336,8 @@ class ChildVoiceTTS {
         this.currentLang = 'en-US';
         this.currentUtterance = null;
         this.isPlaying = false;
-        this.pitch = 1.38; // Tuned high pitch for sweet childlike tone
-        this.rate = 0.86;  // Gentle, slower cadence for young kids
+        this.pitch = 1.38; // Default high pitch for sweet childlike tone
+        this.rate = 0.86;  // Gentle cadence for daytime
         this.autoPlayEnabled = false;
 
         this.onWordBoundary = null;
@@ -354,8 +368,7 @@ class ChildVoiceTTS {
         }
         const langMatches = this.voices.filter(v => v.lang.toLowerCase().startsWith(langPrefix.toLowerCase().slice(0, 2)));
 
-        // Prefer natural, high-pitch or female voices which sound delightfully childlike when pitch is boosted
-        const preferredNames = ['samantha', 'victoria', 'karen', 'tessa', 'flo', 'eddy', 'shelley', 'google', 'natural', 'zira'];
+        const preferredNames = ['samantha', 'victoria', 'karen', 'tessa', 'flo', 'eddy', 'shelley', 'google', 'natural', 'zira', 'kendra'];
         for (const pref of preferredNames) {
             const found = langMatches.find(v => v.name.toLowerCase().includes(pref));
             if (found) return found;
@@ -367,18 +380,29 @@ class ChildVoiceTTS {
     speak(text, options = {}) {
         if (!this.synth) {
             console.warn('Speech synthesis is not supported in this browser.');
+            if (options.onEnd) options.onEnd();
             return;
         }
 
         this.stop();
 
-        if (!text || text.trim().length === 0) return;
+        if (!text || text.trim().length === 0) {
+            if (options.onEnd) options.onEnd();
+            return;
+        }
 
         const lang = options.lang || this.currentLang || 'en-US';
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
-        utterance.pitch = options.pitch || this.pitch;
-        utterance.rate = options.rate || this.rate;
+
+        // If bedtime mode, use extra soothing cadence (slower, gentle pitch)
+        if (options.isBedtime) {
+            utterance.pitch = options.pitch || 1.25;
+            utterance.rate = options.rate || 0.78;
+        } else {
+            utterance.pitch = options.pitch || this.pitch;
+            utterance.rate = options.rate || this.rate;
+        }
 
         const bestVoice = this.getBestVoice(lang);
         if (bestVoice) {
@@ -411,6 +435,7 @@ class ChildVoiceTTS {
             this.isPlaying = false;
             this.currentUtterance = null;
             if (this.onEnd) this.onEnd();
+            if (options.onEnd) options.onEnd();
         };
 
         this.currentUtterance = utterance;

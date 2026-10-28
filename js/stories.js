@@ -1046,5 +1046,535 @@ window.storiesData = [
             },
             targetCount: 3
         }
+    },
+
+    // ==========================================
+    // 7. BEDTIME: The Sleepy Little Star's Lullaby Journey
+    // ==========================================
+    {
+        id: 'bedtime_sleepy_star',
+        grade: 'bedtime',
+        gradeLabel: 'Bedtime Sleep Story 🌙',
+        badgeClass: 'badge-bedtime',
+        themeColor: 'from-indigo-900 to-purple-800',
+        bgTheme: '#1E1B4B',
+        isBedtime: true,
+        icon: '🌙',
+        title: {
+            en: "The Sleepy Little Star's Lullaby Journey",
+            hi: "नन्हे तारे की मीठी सपनों की सैर",
+            es: "El Viaje de la Estrellita Dormilona",
+            fr: "Le Voyage Berceuse de la Petite Étoile",
+            de: "Die Schlummerreise des kleinen Sterns"
+        },
+        description: {
+            en: "A long, soothing bedtime journey to help little ones relax, close their eyes, and float peacefully into dreamland.",
+            hi: "एक लंबी, शांत और मधुर शयन कथा, जिसे सुनकर बच्चे आराम से आँखें मूँद कर मीठी नींद सो सकें।",
+            es: "Un cuento largo y relajante para que los más pequeños cierren los ojos y se duerman tranquilos.",
+            fr: "Une histoire douce et apaisante pour aider les tout-petits à fermer les yeux et s'endormir.",
+            de: "Eine lange, beruhigende Gute-Nacht-Geschichte zum friedlichen Einschlafen und Träumen."
+        },
+        pages: [
+            {
+                pageNumber: 1,
+                text: {
+                    en: "The golden sun has completed his cheerful day, and twilight softly paints the sky in shades of deep lavender and peaceful indigo. Little Twinkle, the golden star, yawns a tiny sleepy yawn. All across the world, the busy day is quieting down. Take a deep, gentle breath in... and let it softly out. It is time to rest.",
+                    hi: "सुनहरा सूरज दिन भर चमकने के बाद अब विश्राम करने जा रहा है। शाम के शांत आसमान में गहरा नीला और बैंगनी रंग घुल रहा है। नन्हे तारे ट्विंकल ने एक प्यारी सी जम्हाई ली। दुनिया भर में दिन की सारी हलचल अब शांत हो रही है। एक धीमी और गहरी सांस लो... और आराम से छोड़ो। अब सोने का समय हो गया है।",
+                    es: "El sol dorado ha terminado su día y el atardecer pinta el cielo de suaves tonos violetas y azul profundo. La pequeña estrellita bosteza despacito. En todo el mundo, los ruidos del día comienzan a calmarse. Respira hondo y suave... y suelta el aire con tranquilidad. Ya es hora de descansar.",
+                    fr: "Le soleil doré a terminé sa journée et le ciel s'habille d'un beau violet tout doux. La petite étoile dorée baille doucement. Partout sur la terre, les bruits de la journée s'apaisent. Respire doucement et profondément... Il est temps de se reposer.",
+                    de: "Die goldene Sonne hat ihren Tag vollendet, und der Abendhimmel leuchtet in sanftem Violett und Nachtblau. Der kleine Stern gähnt ein winziges, müdes Gähnen. Überall auf der Welt kehrt Ruhe ein. Atme ganz tief und sanft ein... und langsam wieder aus. Jetzt ist Zeit zum Ausruhen."
+                },
+                hint: {
+                    en: "🌙 Relax your shoulders and listen to the gentle voice...",
+                    hi: "🌙 आराम से लेटें और मीठी आवाज़ सुनते रहें...",
+                    es: "🌙 Cierra los ojitos y escucha la voz tranquila...",
+                    fr: "🌙 Détends-toi et écoute la douce histoire...",
+                    de: "🌙 Entspanne dich und lausche der sanften Stimme..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#1E1B4B"/>
+                    <!-- Starry Night Nebula -->
+                    <circle cx="300" cy="190" r="180" fill="#312E81" opacity="0.4"/>
+                    <circle cx="200" cy="150" r="100" fill="#4338CA" opacity="0.3"/>
+                    <!-- Crescent Moon -->
+                    <g class="cursor-pointer" onclick="window.soundFX.playSparkle()">
+                        <path d="M 450 80 A 50 50 0 1 0 500 160 A 40 40 0 1 1 450 80 Z" fill="#FDE047"/>
+                        <!-- Sleeping face on moon -->
+                        <path d="M 465 115 Q 470 120, 475 115" stroke="#CA8A04" stroke-width="2.5" fill="none"/>
+                        <circle cx="468" cy="125" r="4" fill="#F472B6" opacity="0.6"/>
+                    </g>
+                    <!-- Soft Fluffy Cloud Pillow -->
+                    <g opacity="0.85">
+                        <ellipse cx="280" cy="260" rx="90" ry="40" fill="#475569"/>
+                        <ellipse cx="340" cy="250" rx="70" ry="35" fill="#64748B"/>
+                        <ellipse cx="230" cy="255" rx="60" ry="30" fill="#64748B"/>
+                    </g>
+                    <!-- Sleepy Star Resting -->
+                    <g class="cursor-pointer" onclick="window.soundFX.playSparkle(); window.triggerCharacterBounce(this)">
+                        <polygon points="280,180 290,210 320,210 295,230 305,260 280,240 255,260 265,230 240,210 270,210" fill="#FACC15"/>
+                        <!-- Closed sleepy eyes -->
+                        <path d="M 270 220 Q 275 225, 280 220" stroke="#78350F" stroke-width="2.5" fill="none"/>
+                        <path d="M 283 220 Q 288 225, 293 220" stroke="#78350F" stroke-width="2.5" fill="none"/>
+                        <circle cx="266" cy="226" r="3" fill="#F87171" opacity="0.7"/>
+                        <circle cx="295" cy="226" r="3" fill="#F87171" opacity="0.7"/>
+                    </g>
+                    <!-- Tiny Twinkles -->
+                    <circle cx="100" cy="80" r="2" fill="#FFFFFF" opacity="0.7"/>
+                    <circle cx="160" cy="130" r="3" fill="#FDE047" opacity="0.8"/>
+                    <circle cx="520" cy="240" r="2.5" fill="#FFFFFF" opacity="0.6"/>
+                    <circle cx="80" cy="280" r="2" fill="#FDE047" opacity="0.6"/>
+                    <text x="350" y="210" font-size="20" fill="#FDE047" opacity="0.7">z</text>
+                    <text x="370" y="195" font-size="26" fill="#FDE047" opacity="0.8">Z</text>
+                </svg>
+                `
+            },
+            {
+                pageNumber: 2,
+                text: {
+                    en: "Gentle Silver Moon looks down like a nightlight in the sky. She hums a tender, floating lullaby that drifts on the quiet breeze: sleep, little dreamer, sleep. Down below, the tall pine trees whisper a soft rustling song, and the velvet moss glows gently in the blue starlight. You are safe, warm, and deeply loved.",
+                    hi: "चाँदी जैसी चमकीली चंदा मामा एक प्यारे नाइट लैंप की तरह आसमान में मुस्करा रहे हैं। वे हवा में एक मीठी, बहती हुई लोरी गा रहे हैं: सो जाओ, मेरे नन्हे प्यारे, सो जाओ। नीचे धरती पर, ऊँचे-ऊँचे पेड़ हवा में हौले-हौले झूम रहे हैं और पत्तियाँ सरसराहट की लोरी सुना रही हैं। तुम बिल्कुल सुरक्षित, शांत और प्यार से भरे हुए हो।",
+                    es: "La Luna de Plata brilla como una tierna lamparita en el cielo nocturno. Canta una dulce canción de cuna que viaja en la brisa: duerme, mi pequeño soñador, duerme. Abajo, los pinos susurran suavemente y las flores del campo cierran sus pétalos. Estás a salvo, abrigadito y lleno de amor.",
+                    fr: "La douce Lune d'Argent veille dans le ciel comme une petite veilleuse. Elle fredonne une tendre berceuse : fais dodo, mon petit ange, dors paisiblement. Tout en bas, les grands sapins dansent au ralenti dans le vent doux. Tu es en sécurité, bien au chaud sous ta couverture.",
+                    de: "Der silberne Mond wacht am Himmel wie ein sanftes Nachtlicht. Er summt ein zartes Wiegenlied, das auf der ruhigen Nachtbrise schwebt: Schlaf, kleiner Träumer, schlaf ein. Tief unten wiegen sich die großen Tannen und rascheln leise. Du bist geborgen, warm und beschützt."
+                },
+                hint: {
+                    en: "✨ Softly breathe in peace, and breathe out all worries...",
+                    hi: "✨ शांति से सांस लें और मन को शांत करें...",
+                    es: "✨ Respira la paz de la noche...",
+                    fr: "✨ Laisse-toi bercer par la douce nuit...",
+                    de: "✨ Lass dich von der ruhigen Nacht umarmen..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#0F172A"/>
+                    <!-- Forest Silhouettes -->
+                    <path d="M 0 320 Q 200 300, 600 320 L 600 380 L 0 380 Z" fill="#1E293B"/>
+                    <polygon points="80,180 30,330 130,330" fill="#022C22"/>
+                    <polygon points="150,220 110,340 190,340" fill="#064E3B"/>
+                    <polygon points="480,190 430,340 530,340" fill="#022C22"/>
+                    <polygon points="530,230 490,350 570,350" fill="#064E3B"/>
+                    <!-- Large Smiling Moon with halo -->
+                    <circle cx="300" cy="140" r="90" fill="#FDE047" opacity="0.15"/>
+                    <circle cx="300" cy="140" r="75" fill="#FEF08A" opacity="0.3"/>
+                    <circle cx="300" cy="140" r="55" fill="#FEF9C3"/>
+                    <!-- Smiling Eyes on Moon -->
+                    <path d="M 280 135 Q 288 142, 296 135" stroke="#92400E" stroke-width="3" fill="none"/>
+                    <path d="M 304 135 Q 312 142, 320 135" stroke="#92400E" stroke-width="3" fill="none"/>
+                    <path d="M 292 152 Q 300 160, 308 152" stroke="#92400E" stroke-width="3" fill="none"/>
+                    <!-- Rosy cheeks -->
+                    <circle cx="276" cy="145" r="7" fill="#F472B6" opacity="0.6"/>
+                    <circle cx="324" cy="145" r="7" fill="#F472B6" opacity="0.6"/>
+                    <!-- Glowing Fireflies -->
+                    <circle cx="220" cy="280" r="4" fill="#FDE047" class="animate-bounce-slow"/>
+                    <circle cx="360" cy="270" r="5" fill="#FDE047" class="animate-bounce-slow"/>
+                    <circle cx="290" cy="300" r="3.5" fill="#FDE047" class="animate-bounce-slow"/>
+                </svg>
+                `
+            },
+            {
+                pageNumber: 3,
+                text: {
+                    en: "Little Twinkle climbs into a soft, fluffy Cloud Boat made of sweetest dreams. The cloud boat rocks slowly side to side... swish, sway... swish, sway. It glides gently across the starlight ocean. Every star in the sky is whispering goodnight. Feel your arms grow heavy and cozy, like warm sleepy feathers.",
+                    hi: "नन्हा ट्विंकल मीठे सपनों की एक रुई जैसी बादलों की नाव में बैठ गया। यह बादलों की नाव धीरे-धीरे झूल रही है... हौले-हौले, आगे-पीछे। यह तारों के नीले समंदर में तैर रही है। आसमान का हर एक तारा शुभ रात्रि कह रहा है। अपने हाथों और पैरों को बिल्कुल ढीला छोड़ दो, वे गर्म और भारी महसूस हो रहे हैं।",
+                    es: "La estrellita sube a un barquito de nube suave hecho de algodón y sueños. El barquito se mece despacio de un lado a otro... suave, lento... suave, lento. Navega en un mar de estrellas tranquilas. Siente cómo tus bracitos y tus piernas se ponen pesados y calientitos, listos para dormir.",
+                    fr: "La petite étoile monte dans un barquito de nuage tout doux. Le bateau de nuage se balance lentement d'un côté à l'autre... tout doucement... tout doucement. Il navigue sur un océan d'étoiles paisibles. Sens tes bras et tes jambes devenir tout lourds et bien chauds.",
+                    de: "Der kleine Stern steigt in ein weiches Wolkenboot aus süßen Träumen. Das Boot schaukelt langsam hin und her... ganz sanft... ganz ruhig. Es gleitet über ein Meer aus Sternenstaub. Spüre, wie deine Arme und Beine wunderbar schwer, warm und müde werden."
+                },
+                hint: {
+                    en: "⛵ Rock gently with the cloud boat...",
+                    hi: "⛵ बादलों की नन्हीं नाव के साथ धीरे-धीरे झूलो...",
+                    es: "⛵ Déjate mecer por el barquito de nubes...",
+                    fr: "⛵ Berce-toi doucement avec le bateau...",
+                    de: "⛵ Schaukele sanft im Wolkenboot..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#1E1B4B"/>
+                    <!-- Waves of soft starlight nebula -->
+                    <path d="M 0 280 Q 150 250, 300 280 T 600 280 L 600 380 L 0 380 Z" fill="#312E81" opacity="0.6"/>
+                    <path d="M 0 310 Q 150 280, 300 310 T 600 310 L 600 380 L 0 380 Z" fill="#4338CA" opacity="0.5"/>
+                    <!-- Cloud Boat -->
+                    <g class="animate-float">
+                        <!-- Cloud Hull -->
+                        <ellipse cx="300" cy="240" rx="95" ry="32" fill="#E2E8F0"/>
+                        <ellipse cx="240" cy="235" rx="55" ry="35" fill="#F8FAFC"/>
+                        <ellipse cx="360" cy="235" rx="55" ry="35" fill="#F8FAFC"/>
+                        <ellipse cx="300" cy="230" rx="65" ry="38" fill="#FFFFFF"/>
+                        <!-- Mast & Sail of Moonlight -->
+                        <line x1="300" y1="210" x2="300" y2="120" stroke="#FDE047" stroke-width="4"/>
+                        <path d="M 300 130 Q 350 160, 300 200 Z" fill="#FEF08A" opacity="0.75"/>
+                        <!-- Sleeping Twinkle inside -->
+                        <circle cx="280" cy="210" r="16" fill="#FACC15"/>
+                        <path d="M 274 210 Q 280 215, 286 210" stroke="#92400E" stroke-width="2" fill="none"/>
+                    </g>
+                    <!-- Floating Starry Dream Bubbles -->
+                    <circle cx="160" cy="180" r="14" fill="#DDD6FE" opacity="0.4" class="floating-bubble"/>
+                    <circle cx="440" cy="170" r="18" fill="#DDD6FE" opacity="0.4" class="floating-bubble"/>
+                    <circle cx="490" cy="210" r="12" fill="#DDD6FE" opacity="0.4" class="floating-bubble"/>
+                </svg>
+                `
+            },
+            {
+                pageNumber: 4,
+                text: {
+                    en: "In their cozy underground burrows, the little bunny families curl up together under warm blankets of soft clover. The baby birds tuck their heads beneath mama's warm feathers. Everything in the meadow is asleep, silent and peaceful. The gentle stars watch over you like friendly guardians of the night.",
+                    hi: "अपनी आरामदायक माँद में, छोटे खरगोशों का परिवार तिपतिया घास की मुलायम चादर ओढ़कर एक-दूसरे से सटकर सो रहा है। नन्हे पक्षी अपनी माँ के गर्म पंखों में सिर छुपाकर सो चुके हैं। पूरे बगीचे और जंगल में शांति छा गई है। रात के प्यारे तारे एक अच्छे पहरेदार की तरह तुम्हारी रक्षा कर रहे हैं।",
+                    es: "En sus madrigueras calentitas, los conejitos se acurrucan juntos bajo mantitas de trébol. Los pajaritos guardan sus cabecitas bajo las plumas de mamá. En todo el bosque no se oye ningún ruido, solo paz y silencio. Las estrellitas te cuidan con ternura desde lo alto.",
+                    fr: "Dans leur terrier bien chaud, les petits lapins se blottissent les uns contre les autres. Les oisillons cachent leur tête sous les plumes de maman. Tout le monde dort dans le pré, paisible et silencieux. Les étoiles veillent tendrement sur ton sommeil.",
+                    de: "In ihrem warmen Bau kuscheln sich die kleinen Häschen eng aneinander unter einer Decke aus weichem Moos. Die kleinen Vögelchen schlafen tief unter Mamas warmen Federn. Alles auf den Wiesen schläft, still und friedlich. Die Sterne passen liebevoll auf dich auf."
+                },
+                hint: {
+                    en: "🐰 All friends are sound asleep in their cozy beds...",
+                    hi: "🐰 सारे प्यारे दोस्त अपने बिस्तरों में सो चुके हैं...",
+                    es: "🐰 Todos los amiguitos ya están dormidos...",
+                    fr: "🐰 Tous les petits animaux dorment déjà...",
+                    de: "🐰 Alle Tiere schlafen tief und fest..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#0F172A"/>
+                    <!-- Cozy Warm Underground Den -->
+                    <ellipse cx="300" cy="270" rx="200" ry="90" fill="#78350F"/>
+                    <ellipse cx="300" cy="275" rx="175" ry="75" fill="#451A03"/>
+                    <!-- Soft Blanket -->
+                    <path d="M 180 270 Q 300 240, 420 270 L 410 320 Q 300 340, 190 320 Z" fill="#F472B6" opacity="0.85"/>
+                    <path d="M 185 275 Q 300 248, 415 275" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="10 8" fill="none"/>
+                    <!-- Two Cuddled Sleeping Bunnies -->
+                    <g>
+                        <!-- Bunny 1 -->
+                        <ellipse cx="270" cy="255" rx="22" ry="18" fill="#FBCFE8"/>
+                        <ellipse cx="255" cy="240" rx="5" ry="14" fill="#FBCFE8" transform="rotate(-30 255 240)"/>
+                        <ellipse cx="265" cy="235" rx="5" ry="14" fill="#FBCFE8" transform="rotate(-10 265 235)"/>
+                        <path d="M 264 255 Q 268 259, 272 255" stroke="#9D174D" stroke-width="2" fill="none"/>
+                        <!-- Bunny 2 -->
+                        <ellipse cx="330" cy="255" rx="22" ry="18" fill="#E2E8F0"/>
+                        <ellipse cx="340" cy="235" rx="5" ry="14" fill="#E2E8F0" transform="rotate(10 340 235)"/>
+                        <ellipse cx="350" cy="240" rx="5" ry="14" fill="#E2E8F0" transform="rotate(30 350 240)"/>
+                        <path d="M 324 255 Q 328 259, 332 255" stroke="#475569" stroke-width="2" fill="none"/>
+                    </g>
+                    <!-- Golden Lantern Glowing Softly -->
+                    <g class="cursor-pointer" onclick="window.soundFX.playSparkle()">
+                        <circle cx="120" cy="180" r="35" fill="#FEF08A" opacity="0.2"/>
+                        <circle cx="120" cy="180" r="20" fill="#FDE047" opacity="0.4"/>
+                        <rect x="110" y="165" width="20" height="30" rx="6" fill="#FBBF24"/>
+                        <circle cx="120" cy="180" r="6" fill="#FFFFFF"/>
+                    </g>
+                    <text x="360" y="220" font-size="18" fill="#FDE047">z</text>
+                    <text x="380" y="200" font-size="24" fill="#FDE047">Z</text>
+                </svg>
+                `
+            },
+            {
+                pageNumber: 5,
+                text: {
+                    en: "Twinkle the little star closes his sparkling golden eyes and cuddles under a cloud blanket. He whispers: 'Goodnight little room. Goodnight moon. Goodnight stars. Goodnight, sweet child.' Let your heavy eyelids close. Let your mind drift like a feather on the warm night air. Sweet dreams. Sleep tight. Goodnight.",
+                    hi: "नन्हे तारे ने भी अपनी चमकीली आँखें मूँद लीं और बादलों की चादर में दुबक गया। उसने धीरे से कहा: 'शुभ रात्रि प्यारी दुनिया। शुभ रात्रि चंदा मामा। शुभ रात्रि मेरे नन्हे दोस्त।' अब तुम भी अपनी आँखें बंद कर लो। तुम्हारा मन पंख की तरह हवा में तैर रहा है। मीठे-मीठे प्यारे सपने देखो। शुभ रात्रि।",
+                    es: "La estrellita cierra sus ojitos brillantes y se acurruca bajo su mantita de nubes. Susurra con ternura: 'Buenas noches luna. Buenas noches estrellas. Buenas noches, dulce niño.' Deja caer tus párpados pesados. Flota como una pluma en el aire cálido. Dulces sueños. Duerme bien. Buenas noches.",
+                    fr: "La petite étoile ferme ses jolis yeux et se love dans son nuage douillet. Elle murmure : 'Bonne nuit la lune. Bonne nuit les étoiles. Bonne nuit, mon petit amour.' Ferme tes paupières toutes lourdes. Laisse-toi glisser dans les rêves merveilleux. Fais de beaux rêves. Dors bien. Bonne nuit.",
+                    de: "Der kleine Stern schließt seine funkelnden Augen und kuschelt sich tief in seine Wolkendecke. Er flüstert: 'Gute Nacht, lieber Mond. Gute Nacht, Sterne. Gute Nacht, liebes Kind.' Schließe nun deine schweren Augen. Träume süß und schlafe tief und fest ein. Gute Nacht."
+                },
+                hint: {
+                    en: "😴 Close your eyes... sweet dreams, little star...",
+                    hi: "😴 आँखें बंद करो... शुभ रात्रि, मीठे सपने...",
+                    es: "😴 Cierra tus ojitos... dulces sueños...",
+                    fr: "😴 Ferme les yeux... fais de doux rêves...",
+                    de: "😴 Schließe deine Augen... träum was Schönes..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#0B0F19"/>
+                    <!-- Starry Galaxy Glow -->
+                    <circle cx="300" cy="190" r="220" fill="#1E1B4B" opacity="0.8"/>
+                    <circle cx="300" cy="190" r="140" fill="#312E81" opacity="0.6"/>
+                    <!-- Sleeping Moon and Star Together -->
+                    <g>
+                        <!-- Crescent Moon Holding Star -->
+                        <path d="M 330 100 A 70 70 0 1 0 390 230 A 60 60 0 1 1 330 100 Z" fill="#FDE047"/>
+                        <!-- Moon Sleeping Face -->
+                        <path d="M 335 150 Q 345 160, 355 150" stroke="#B45309" stroke-width="3" fill="none"/>
+                        <!-- Star in arms -->
+                        <polygon points="270,180 278,200 300,200 282,215 288,235 270,222 252,235 258,215 240,200 262,200" fill="#FACC15"/>
+                        <path d="M 264 205 Q 270 210, 276 205" stroke="#78350F" stroke-width="2.5" fill="none"/>
+                    </g>
+                    <!-- Soft Cloud Blanket -->
+                    <ellipse cx="300" cy="270" rx="140" ry="40" fill="#334155" opacity="0.8"/>
+                    <ellipse cx="300" cy="275" rx="120" ry="32" fill="#475569" opacity="0.9"/>
+                    <!-- Sweet Dreams Sparkle Message -->
+                    <text x="300" y="340" text-anchor="middle" font-size="24" font-weight="bold" fill="#FEF08A" opacity="0.9">✨ Goodnight & Sweet Dreams ✨</text>
+                </svg>
+                `
+            }
+        ],
+        miniGame: {
+            type: 'bubble_pop',
+            title: {
+                en: "⭐ Night Sky Stars",
+                hi: "⭐ रात के तारे",
+                es: "⭐ Estrellas de la Noche",
+                fr: "⭐ Étoiles de la Nuit",
+                de: "⭐ Nachtsterne"
+            },
+            instruction: {
+                en: "Touch the gentle glowing stars to light the sleepy night sky.",
+                hi: "सोते हुए आसमान को सजाने के लिए चमकते तारों पर छुएं।",
+                es: "Toca las estrellas para iluminar la noche tranquila.",
+                fr: "Touche les étoiles douces pour éclairer la nuit.",
+                de: "Tippe auf die sanften Sterne für den Nachthimmel."
+            },
+            targetCount: 3
+        }
+    },
+
+    // ==========================================
+    // 8. BEDTIME: Goodnight, Cozy Little Forest
+    // ==========================================
+    {
+        id: 'bedtime_forest_sleep',
+        grade: 'bedtime',
+        gradeLabel: 'Bedtime Sleep Story 🌙',
+        badgeClass: 'badge-bedtime',
+        themeColor: 'from-slate-900 to-teal-950',
+        bgTheme: '#064E3B',
+        isBedtime: true,
+        icon: '🌲',
+        title: {
+            en: "Goodnight, Cozy Little Forest",
+            hi: "सोता हुआ प्यारा जंगल",
+            es: "Buenas Noches, Bosque Mágico",
+            fr: "Bonne Nuit, Jolie Forêt",
+            de: "Gute Nacht, lieber Wald"
+        },
+        description: {
+            en: "Listen to the whispering trees and gentle river as Barnaby Bear and all forest friends drift off to sleep.",
+            hi: "पेड़ों की सरसराहट और कलकल बहती नदी की लोरी सुनकर भालू दादा और सभी जंगल के दोस्त सो रहे हैं।",
+            es: "Escucha el susurro del viento y el río mientras todos los animalitos del bosque duermen tranquilos.",
+            fr: "Écoute le murmure du ruisseau et le vent dans les arbres bercer tous les petits animaux.",
+            de: "Lausche dem rauschenden Bach und den Bäumen, während die Waldtiere friedlich einschlafen."
+        },
+        pages: [
+            {
+                pageNumber: 1,
+                text: {
+                    en: "Night has quietly arrived in the whispering forest. The gentle moonlight filters through the high pine branches, painting silver patterns upon the soft grass. The cool evening breeze sings a soft lullaby: hush-a-bye, little one, hush-a-bye. Feel how calm and quiet the woods have become.",
+                    hi: "शांत जंगल में रात ने अपने कदम रख दिए हैं। देवदार के ऊँचे पेड़ों की डालियों से छनकर चाँद की किरणें ज़मीन पर चाँदी जैसी चमक बिखेर रही हैं। शाम की ठंडी हवा एक धीमी सी लोरी गा रही है: सो जाओ, मेरे प्यारे, सो जाओ। देखो जंगल कितना शांत और सुंदर हो गया है।",
+                    es: "La noche ha llegado en silencio al bosque misterioso. La luz de la luna atraviesa las ramas de los altos pinos y dibuja sombras suaves sobre el césped. La brisa canta un susurro: duerme, pequeño, duerme en paz. Siente la calma y el silencio del bosque.",
+                    fr: "La nuit s'est installée en silence dans la belle forêt. La lune éclaire les branches des grands arbres et caresse l'herbe douce. Le vent frais chante doucement : fais dodo, mon petit, fais dodo. Tout est si calme et tranquille.",
+                    de: "Die Nacht ist leise in den Wald eingekehrt. Das Mondlicht funkelt durch die hohen Tannenzweige und zeichnet silberne Muster auf das weiche Moos. Der Wind singt ein leises Schlaflied: Schlaf ein, mein Kleines, schlaf ein. Spüre die tiefe Ruhe des Waldes."
+                },
+                hint: {
+                    en: "🌲 Listen to the quiet trees swaying...",
+                    hi: "🌲 पेड़ों की मंद-मंद सरसराहट सुनो...",
+                    es: "🌲 Escucha el susurro de los árboles...",
+                    fr: "🌲 Écoute les arbres danser doucement...",
+                    de: "🌲 Lausche den sanften Tannen..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#064E3B"/>
+                    <circle cx="300" cy="180" r="160" fill="#022C22" opacity="0.8"/>
+                    <!-- Pine silhouettes -->
+                    <polygon points="120,80 60,300 180,300" fill="#022C22"/>
+                    <polygon points="220,120 170,320 270,320" fill="#065F46"/>
+                    <polygon points="480,90 420,310 540,310" fill="#022C22"/>
+                    <polygon points="380,130 330,330 430,330" fill="#065F46"/>
+                    <!-- Distant Mountain and Silver Moon -->
+                    <circle cx="300" cy="90" r="45" fill="#FEF9C3"/>
+                    <circle cx="295" cy="88" r="40" fill="#064E3B"/>
+                    <!-- Soft fireflies -->
+                    <circle cx="150" cy="220" r="4" fill="#FDE047" opacity="0.8"/>
+                    <circle cx="300" cy="250" r="5" fill="#FDE047" opacity="0.9"/>
+                    <circle cx="450" cy="210" r="4" fill="#FDE047" opacity="0.8"/>
+                </svg>
+                `
+            },
+            {
+                pageNumber: 2,
+                text: {
+                    en: "Deep inside their cozy den under the old oak roots, Barnaby Bear hugs his little cub. Mama Bear pulls a soft quilt made of dry leaves and moss up to Baby Bear's chin. 'Sleep well, my sweet cub,' she whispers gently. Barnaby's breathing is slow and steady: in... and out... in... and out.",
+                    hi: "पुराने बलूत के पेड़ की जड़ों के नीचे बनी आरामदायक गुफा में, भालू दादा ने अपने नन्हे बच्चे को प्यार से गले लगाया। माँ भालू ने पत्तियों और मुलायम काई की गर्म रजाई बच्चे के ऊपर ओढ़ा दी। 'मीठे सपने देखो, मेरे नन्हे राजकुमार,' उसने प्यार से फुसफुसाया। भालू दादा की सांसें बहुत धीमी और शांत हैं: अंदर... और बाहर...",
+                    es: "En su cueva calientita bajo las raíces del roble, el oso Barnaby abraza a su pequeño osezno. Mamá Osa acomoda una suave mantita de musgo y hojas secas hasta su hociquito. 'Duerme feliz, mi tesoro', susurra con amor. La respiración de los ositos es lenta y profunda.",
+                    fr: "Dans leur tanière douillette sous le vieux chêne, Barnabé l'ourson se pelotonne contre son petit. Maman Ourse remonte une couverture de feuilles douces jusqu'au menton. 'Dors bien, mon trésor', chuchote-t-elle. La respiration est calme et lente.",
+                    de: "Tief in ihrer kuscheligen Höhle hält Bär Barnaby sein kleines Bärenbaby im Arm. Mama Bär deckt das Bärenkind mit einer weichen Moosdecke zu. 'Schlaf schön, mein Liebling', flüstert sie leise. Der Atem der Bären ist ruhig und tief: ein... und aus..."
+                },
+                hint: {
+                    en: "🧸 Breathe in slowly... and breathe out gently...",
+                    hi: "🧸 धीमी सांस अंदर लें... और आराम से छोड़ें...",
+                    es: "🧸 Respira despacio y siente el calor...",
+                    fr: "🧸 Respire lentement comme les petits oursons...",
+                    de: "🧸 Atme langsam ein... und ganz entspannt aus..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#022C22"/>
+                    <!-- Den interior -->
+                    <ellipse cx="300" cy="260" rx="220" ry="110" fill="#78350F"/>
+                    <ellipse cx="300" cy="270" rx="190" ry="90" fill="#451A03"/>
+                    <!-- Leaf & Moss Blanket -->
+                    <path d="M 160 270 Q 300 230, 440 270 L 430 340 Q 300 360, 170 340 Z" fill="#84CC16" opacity="0.8"/>
+                    <!-- Sleeping Bear Faces -->
+                    <g>
+                        <!-- Big Bear -->
+                        <circle cx="260" cy="240" r="38" fill="#B45309"/>
+                        <circle cx="230" cy="215" r="12" fill="#B45309"/>
+                        <circle cx="280" cy="215" r="12" fill="#B45309"/>
+                        <ellipse cx="255" cy="255" rx="18" ry="12" fill="#FDE68A"/>
+                        <ellipse cx="255" cy="250" rx="7" ry="5" fill="#1E293B"/>
+                        <path d="M 245 235 Q 250 240, 255 235" stroke="#1E293B" stroke-width="2.5" fill="none"/>
+                        <!-- Cub -->
+                        <circle cx="340" cy="255" r="26" fill="#D97706"/>
+                        <circle cx="320" cy="235" r="9" fill="#D97706"/>
+                        <circle cx="355" cy="235" r="9" fill="#D97706"/>
+                        <ellipse cx="338" cy="265" rx="12" ry="8" fill="#FDE68A"/>
+                        <path d="M 332 252 Q 336 256, 340 252" stroke="#1E293B" stroke-width="2" fill="none"/>
+                    </g>
+                    <!-- Sleep bubbles -->
+                    <text x="380" y="220" font-size="20" fill="#FDE047">z</text>
+                    <text x="400" y="200" font-size="28" fill="#FDE047">Z</text>
+                </svg>
+                `
+            },
+            {
+                pageNumber: 3,
+                text: {
+                    en: "Nearby, the little clear forest brook bubbles over smooth, round pebbles. It whispers a soothing, endless water melody: shhh... shhh... hush... hush. The tiny river ripples carry away all the thoughts of the day, leaving your mind clear, quiet, and wonderfully peaceful.",
+                    hi: "पास ही में, जंगल का नन्हा सा झरना गोल-गोल पत्थरों के ऊपर से बह रहा है। पानी की कलकल धारा एक मीठी धुन गुनगुना रही है: छम-छम... शांत... शांत। नदी की नन्हीं लहरें दिन भर की सारी बातें बहाकर ले जा रही हैं। तुम्हारा मन बिल्कुल शांत, हल्का और स्वच्छ हो गया है।",
+                    es: "Cerca de allí, el arroyito del bosque fluye suave sobre las piedras pulidas. Canta una melodía de agua fresca: shhh... shhh... calma... calma. Las olitas se llevan suavemente todos los pensamientos del día, dejando tu mente ligera, tranquila y en completa paz.",
+                    fr: "Tout près, le petit ruisseau chante doucement sur les galets ronds. Il murmure une mélodie apaisante : chhh... chhh... calme... calme. L'eau emporte avec elle toutes les pensées de la journée, laissant ton esprit tout tranquille et reposé.",
+                    de: "Ganz in der Nähe plätschert der kleine Waldbach über runde Steine. Er flüstert eine ewige, beruhigende Wassermelodie: shhh... shhh... ganz still... ganz ruhig. Das Wasser spült alle Gedanken des Tages fort und hinterlässt pure Ruhe und Geborgenheit."
+                },
+                hint: {
+                    en: "💧 Feel the calming gentle flow of the brook...",
+                    hi: "💧 बहते हुए शांत पानी की लोरी सुनो...",
+                    es: "💧 Escucha el suave fluir del arroyito...",
+                    fr: "💧 Écoute le ruisseau murmurer...",
+                    de: "💧 Höre das sanfte Plätschern des Bachs..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#022C22"/>
+                    <!-- Forest banks -->
+                    <path d="M 0 0 L 180 0 L 220 380 L 0 380 Z" fill="#064E3B"/>
+                    <path d="M 420 0 L 600 0 L 600 380 L 380 380 Z" fill="#064E3B"/>
+                    <!-- Gentle Stream in middle -->
+                    <path d="M 180 0 Q 300 190, 220 380 L 380 380 Q 300 190, 420 0 Z" fill="#0284C7"/>
+                    <!-- Water ripples -->
+                    <path d="M 230 100 Q 280 80, 330 100" stroke="#7DD3FC" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    <path d="M 250 200 Q 300 180, 350 200" stroke="#7DD3FC" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    <path d="M 240 300 Q 290 280, 340 300" stroke="#7DD3FC" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    <!-- Smooth river stones -->
+                    <ellipse cx="210" cy="150" rx="18" ry="10" fill="#64748B"/>
+                    <ellipse cx="370" cy="240" rx="22" ry="12" fill="#64748B"/>
+                    <ellipse cx="230" cy="320" rx="16" ry="9" fill="#475569"/>
+                    <!-- Fireflies hovering over water -->
+                    <circle cx="280" cy="140" r="4" fill="#FDE047" class="animate-bounce-slow"/>
+                    <circle cx="310" cy="260" r="5" fill="#FDE047" class="animate-bounce-slow"/>
+                </svg>
+                `
+            },
+            {
+                pageNumber: 4,
+                text: {
+                    en: "High up in the hollow of the ancient maple tree, Sammy the squirrel curls into a soft, round ball, wrapping his big, fluffy orange tail over his nose like a warm scarf. The sleepy wise owl perches on a nearby branch, closing her great golden eyes. 'Hoo-hoo... goodnight little world, sleep well.'",
+                    hi: "ऊँचे पेड़ के खोखल में, गिलहरी गोल-मटोल होकर बैठ गई है और उसने अपनी बड़ी रोएंदार पूँछ को मफलर की तरह अपने चेहरे पर लपेट लिया है। पास ही डाल पर बैठा उल्लू अपनी आँखें मूँदते हुए धीरे से बोला: 'हू-हू... शुभ रात्रि नन्ही दुनिया, आराम से सो जाओ।'",
+                    es: "En lo alto del viejo árbol, la ardilla Sammy se hace una bolita suave y se tapa la naricita con su cola esponjosa como una bufanda. El búho sabio cierra sus grandes ojos dorados en una rama cercana y canta: 'Uuu-uuu... buenas noches mundo entero, duerman bien.'",
+                    fr: "Tout en haut dans le tronc du vieil arbre, l'écureuil se met en boule et entoure son nez de sa belle queue toute douce. La chouette sage ferme ses grands yeux d'or et hulule doucement : 'Hou-hou... bonne nuit le monde, dormez bien.'",
+                    de: "Hoch oben im hohlen Ahornbaum rollt sich Eichhörnchen Sammy zu einer weichen Kugel zusammen und wickelt seinen buschigen Schwanz wie einen Schal um sein Näschen. Die weise Eule schließt ihre goldenen Augen: 'Hu-huu... gute Nacht, schlaft alle gut.'"
+                },
+                hint: {
+                    en: "🦉 Curl up warm and cozy like the little squirrel...",
+                    hi: "🦉 गिलहरी की तरह रजाई में सिमट कर लेट जाओ...",
+                    es: "🦉 Acurrúcate calientito bajo tu cobija...",
+                    fr: "🦉 Mets-toi bien en boule sous la couette...",
+                    de: "🦉 Kuschel dich warm ein wie das kleine Eichhörnchen..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#022C22"/>
+                    <!-- Ancient Tree Trunk -->
+                    <path d="M 0 0 L 220 0 Q 180 190, 240 380 L 0 380 Z" fill="#78350F"/>
+                    <!-- Hollow in tree -->
+                    <ellipse cx="140" cy="180" rx="60" ry="80" fill="#451A03"/>
+                    <!-- Sammy Squirrel curled up in hollow -->
+                    <g>
+                        <circle cx="135" cy="185" r="28" fill="#EA580C"/>
+                        <!-- Tail wrapped like scarf -->
+                        <path d="M 120 210 Q 90 170, 130 150 Q 160 170, 145 200" fill="#C2410C"/>
+                        <!-- Sleeping face -->
+                        <path d="M 130 180 Q 134 185, 138 180" stroke="#7C2D12" stroke-width="2" fill="none"/>
+                    </g>
+                    <!-- Branch with Owl on Right -->
+                    <path d="M 600 220 L 360 220 Q 380 240, 600 250 Z" fill="#78350F"/>
+                    <!-- Wise Owl -->
+                    <g>
+                        <!-- Body -->
+                        <ellipse cx="440" cy="180" rx="30" ry="40" fill="#581C87"/>
+                        <!-- Feathers belly -->
+                        <ellipse cx="440" cy="190" rx="18" ry="24" fill="#DDD6FE"/>
+                        <!-- Sleeping Eyes -->
+                        <circle cx="428" cy="165" r="12" fill="#E9D5FF"/>
+                        <circle cx="452" cy="165" r="12" fill="#E9D5FF"/>
+                        <path d="M 422 165 Q 428 170, 434 165" stroke="#3B0764" stroke-width="2.5" fill="none"/>
+                        <path d="M 446 165 Q 452 170, 458 165" stroke="#3B0764" stroke-width="2.5" fill="none"/>
+                        <polygon points="440,172 436,180 444,180" fill="#F59E0B"/>
+                    </g>
+                    <!-- Night Sky Sparkles -->
+                    <circle cx="320" cy="70" r="3" fill="#FDE047"/>
+                    <circle cx="480" cy="50" r="2.5" fill="#FFFFFF"/>
+                </svg>
+                `
+            },
+            {
+                pageNumber: 5,
+                text: {
+                    en: "Now the entire forest is fast asleep. The trees are resting. The flowers have closed their petals. The stream hums in a dream. Close your eyes, little darling. Let the soft starlight tuck you in. Rest your head on your pillow and drift off into sweet, beautiful sleep. Goodnight little forest. Goodnight sweet child.",
+                    hi: "अब पूरा जंगल गहरी नींद में सो गया है। पेड़ विश्राम कर रहे हैं। फूलों ने अपनी पंखुड़ियाँ बंद कर ली हैं। झरना सपनों में गुनगुना रहा है। तुम भी अपनी आँखें बंद कर लो, मेरे प्यारे बच्चे। तारों की मीठी रोशनी ने तुम्हें ढक लिया है। तकिए पर सिर रखकर गहरी नींद में सो जाओ। शुभ रात्रि।",
+                    es: "Ahora todo el bosque duerme plácidamente. Los árboles descansan, las flores cierran sus pétalos y el río canta en sueños. Cierra tus ojitos, mi pequeño amor. Deja que la luz de las estrellas te arrope. Apoya tu cabecita en la almohada y duerme feliz. Buenas noches bosque. Buenas noches niño querido.",
+                    fr: "Maintenant, toute la forêt dort à poings fermés. Les arbres se reposent. Les fleurs ont fermé leurs pétales. Ferme tes yeux, mon trésor. Laisse la poussière d'étoiles te border. Pose ta tête sur l'oreiller et glisse dans un sommeil merveilleux. Bonne nuit la forêt. Bonne nuit mon enfant.",
+                    de: "Nun schläft der ganze Wald tief und fest. Die Bäume ruhen. Die Blumen haben ihre Blütenblätter geschlossen. Schließe deine Augen, mein kleiner Liebling. Lass dich vom Sternenlicht zudecken. Lege dein Köpfchen aufs Kissen und gleite in wunderschöne Träume. Gute Nacht lieber Wald. Gute Nacht liebes Kind."
+                },
+                hint: {
+                    en: "🌙 Goodnight, sweet dreams...",
+                    hi: "🌙 शुभ रात्रि, सुंदर सपने...",
+                    es: "🌙 Buenas noches, duerme bien...",
+                    fr: "🌙 Bonne nuit, dors bien...",
+                    de: "🌙 Gute Nacht, schlaf gut..."
+                },
+                svg: `
+                <svg viewBox="0 0 600 380" class="w-full h-full select-none">
+                    <rect width="600" height="380" fill="#021C14"/>
+                    <!-- Glowing starry forest silhouette -->
+                    <circle cx="300" cy="200" r="190" fill="#064E3B" opacity="0.6"/>
+                    <circle cx="300" cy="200" r="110" fill="#047857" opacity="0.4"/>
+                    <polygon points="300,60 210,320 390,320" fill="#022C22"/>
+                    <!-- Huge Golden Crescent Moon -->
+                    <path d="M 280 80 A 60 60 0 1 0 340 190 A 50 50 0 1 1 280 80 Z" fill="#FEF08A"/>
+                    <!-- Goodnight Message -->
+                    <text x="300" y="340" text-anchor="middle" font-size="22" font-weight="bold" fill="#FDE047" opacity="0.9">🌲 Goodnight, Peaceful Forest 🌙</text>
+                    <!-- Fireflies sleeping -->
+                    <circle cx="240" cy="280" r="3" fill="#FDE047" opacity="0.7"/>
+                    <circle cx="360" cy="280" r="3" fill="#FDE047" opacity="0.7"/>
+                </svg>
+                `
+            }
+        ],
+        miniGame: {
+            type: 'bubble_pop',
+            title: {
+                en: "🌲 Forest Fireflies",
+                hi: "🌲 जंगल के जुगनू",
+                es: "🌲 Luciérnagas del Bosque",
+                fr: "🌲 Lucioles de la Forêt",
+                de: "🌲 Waldglühwürmchen"
+            },
+            instruction: {
+                en: "Tap the tiny glowing fireflies to light the peaceful night.",
+                hi: "शांति से चमकते जुगनुओं को छुएं।",
+                es: "Toca las luciérnagas para iluminar el bosque.",
+                fr: "Touche les lucioles pour illuminer la nuit.",
+                de: "Tippe auf die Glühwürmchen für sanftes Licht."
+            },
+            targetCount: 3
+        }
     }
 ];

@@ -92,6 +92,9 @@
             <button data-filter="ukg" class="filter-btn chunky-btn bg-white text-purple-900 font-black px-5 py-3 rounded-2xl text-sm md:text-base border-2 border-purple-300 shadow-sm">
                 <span id="filter-ukg">🚀 UKG (Ages 4-6)</span>
             </button>
+            <button data-filter="bedtime" class="filter-btn chunky-btn bg-white text-indigo-950 font-black px-5 py-3 rounded-2xl text-sm md:text-base border-2 border-indigo-300 shadow-sm">
+                <span id="filter-bedtime">🌙 Bedtime Sleep Stories</span>
+            </button>
             <button data-filter="activities" class="filter-btn chunky-btn bg-white text-rose-900 font-black px-5 py-3 rounded-2xl text-sm md:text-base border-2 border-rose-300 shadow-sm">
                 <span id="filter-activities">🎨 Magic Coloring & Fun</span>
             </button>
@@ -224,6 +227,12 @@
                         <span id="read-to-me-label">Read to Me (Child Voice)</span>
                     </button>
 
+                    <!-- Sleep Mode (Hands-Free Continuous Reading) -->
+                    <button id="btn-sleep-mode" class="chunky-btn bg-indigo-900 hover:bg-indigo-800 text-yellow-300 font-black px-4 md:px-5 py-2.5 rounded-2xl text-sm shadow-md flex items-center gap-2 border-2 border-indigo-500" title="Auto-reads the whole story page-by-page without touching screen">
+                        <span class="text-lg">🌙</span>
+                        <span id="sleep-mode-label">Sleep Mode (Hands-Free)</span>
+                    </button>
+
                     <!-- Pause / Resume Voice -->
                     <button id="btn-pause-voice" class="chunky-btn bg-white hover:bg-amber-200 text-amber-950 font-black p-2.5 rounded-2xl text-sm border-2 border-amber-300 shadow-sm" title="Pause or Resume Voice">
                         <span>⏸️</span>
@@ -233,6 +242,11 @@
                     <button id="btn-stop-voice" class="chunky-btn bg-white hover:bg-rose-100 text-rose-700 font-black p-2.5 rounded-2xl text-sm border-2 border-rose-300 shadow-sm hidden" title="Stop Voice">
                         <span>⏹️</span>
                     </button>
+
+                    <!-- Night Dimmer Toggle -->
+                    <button id="btn-night-dimmer" class="chunky-btn bg-slate-800 hover:bg-slate-700 text-yellow-200 font-black px-3.5 py-2.5 rounded-2xl text-xs border-2 border-slate-600 shadow-sm" title="Dim screen for bedtime">
+                        <span id="dimmer-label">✨ Dimmer</span>
+                    </button>
                 </div>
 
                 <!-- Auto-read toggle -->
@@ -240,6 +254,12 @@
                     <input type="checkbox" id="auto-read-toggle" checked class="w-5 h-5 accent-emerald-500 rounded cursor-pointer">
                     <span id="auto-read-label">Auto-Read on Flip</span>
                 </label>
+            </div>
+
+            <!-- Continuous Sleep Mode Status Banner -->
+            <div id="sleep-status-banner" class="hidden bg-indigo-950 text-yellow-200 px-4 py-2 text-center text-xs md:text-sm font-black tracking-wide border-b border-indigo-800 flex items-center justify-center gap-2">
+                <span class="animate-pulse">🌙</span>
+                <span id="sleep-status-text">Sleep Mode Active: Auto-reading all pages without turning... Shhh...</span>
             </div>
 
             <!-- Story Text Area with karaoke highlight -->
